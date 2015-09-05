@@ -1,15 +1,6 @@
 """Number Pyramids."""
 
-number = int(raw_input('Enter your number: '))
-
-for i in range(1, number + 1):
-    to_show = ''
-    for j in range(0, i):
-        to_show += str(i)
-    print to_show
-
-for i in range(1, number)[::-1]:
-    to_show = ''
-    for j in range(0, i):
-        to_show += str(i)
-    print to_show
+n = int(raw_input("Give me a number: "))
+numbers = range(1, n+1) + range(1, n)[::-1]
+for number in numbers:
+    print str(number) * number
