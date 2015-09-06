@@ -1,4 +1,4 @@
-# Alphabeticla Substring
+# Alphabetical Substring
 
 Dado un texto, encontrar la secuencia alfabética de caractéres más grande dentro de ella.
 
