@@ -1,5 +1,5 @@
 """Counting vowels, each one."""
-text = raw_input("Give a text: ")
+text = raw_input("Give me a text: ").lower()
 a = 0
 e = 0
 i = 0
@@ -16,8 +16,8 @@ for letter in text:
         o += 1
     elif letter == 'u':
         u += 1
-print "We haver", a, "letters a"
-print "We haver", e, "letters e"
-print "We haver", i, "letters i"
-print "We haver", o, "letters o"
-print "We haver", u, "letters u"
+print "That text has", a, "letters a"
+print "That text has", e, "letters e"
+print "That text has", i, "letters i"
+print "That text has", o, "letters o"
+print "That text has", u, "letters u"
