@@ -1,6 +1,7 @@
 # Counting Vowels
 
 Dado un texto imprime las veces que la palabra `bob` aparece.
+
 **Nota**: En el texto `bobob`, la palabra bob aparece 2 veces.
 
 ## Ejemplo
