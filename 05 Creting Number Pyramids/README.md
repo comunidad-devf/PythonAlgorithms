@@ -8,6 +8,7 @@ Dado un número imprime una pirámide volteada da la siguiente manera:
 `2`
 
 **Salida**:
+
 `1`
 
 `22`
