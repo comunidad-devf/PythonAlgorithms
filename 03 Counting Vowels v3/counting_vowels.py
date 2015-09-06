@@ -1,6 +1,6 @@
 """Couting Vowels using dictionaries."""
 
-text = raw_input("Give a text: ")
+text = raw_input("Give me a text: ").lower()
 vowels = {
     "a": 0,
     "e": 0,
@@ -19,8 +19,8 @@ for letter in text:
         vowels['o'] += 1
     elif letter == vowels.keys()[4]:
         vowels['u'] += 1
-print "We haver", vowels['a'], "letters a"
-print "We haver", vowels['e'], "letters e"
-print "We haver", vowels['i'], "letters i"
-print "We haver", vowels['o'], "letters o"
-print "We haver", vowels['u'], "letters u"
+print "That text has", vowels['a'], "letters a"
+print "That text has", vowels['e'], "letters e"
+print "That text has", vowels['i'], "letters i"
+print "That text has", vowels['o'], "letters o"
+print "That text has", vowels['u'], "letters u"
