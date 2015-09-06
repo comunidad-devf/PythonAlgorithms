@@ -1,4 +1,4 @@
-# Counting Vowels
+# Counting Bobs
 
 Dado un texto imprime las veces que la palabra `bob` aparece.
 
