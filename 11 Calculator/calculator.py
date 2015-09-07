@@ -53,3 +53,5 @@ elif o == '5':
     print modulus(a, b)
 elif o == '6':
     print compare(a, b)
+else:
+    print "Invalid option"
