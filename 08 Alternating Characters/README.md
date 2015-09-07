@@ -1,4 +1,4 @@
-# Utopian Tree
+# Alternating Characters
 
 Eme es una persona un poco especial, a él sólo le gustan las cadenas de texto que
 contengan letras consecutivas que sean diferentes. Por ejemplo, a el le encanta
