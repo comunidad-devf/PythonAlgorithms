@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bouble sort sample."""
+"""Visual Bubble Sort."""
 
 from random import sample
 import os
