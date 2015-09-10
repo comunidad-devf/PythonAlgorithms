@@ -5,52 +5,56 @@ from random import sample
 import os
 import time
 
+colors = {
+    'HEADER': '\033[95m',
+    'OKBLUE': '\033[94m',
+    'OKGREEN': '\033[92m',
+    'WARNING': '\033[93m',
+    'FAIL': '\033[91m',
+    'ENDC': '\033[0m',
+    'BOLD': '\033[1m',
+    'UNDERLINE': '\033[4m',
+}
 
-def print_pyramid(elements, a=None, b=None, color=None):
-    """Print a number pyramid."""
-    for i in range(len(elements)):
-        if i == a:
-            print '\033[95m' + ('■' * elements[i]) + '\033[0m'
-        elif i == b:
-            print '\033[94m' + ('■' * elements[i]) + '\033[0m'
-        else:
-            if color:
-                print color + ('■' * elements[i]) + '\033[0m'
-            else:
-                print '■' * elements[i]
-    print '\a'
 
+def print_simple_pyramid(l, color):
+    """Print simple pyramid."""
+    for i in range(len(l)):
+        print color, '■' * random_numbers[i], random_numbers[i], colors['ENDC']
 
 os.system('clear')
-numbers = sample(range(1, 11), 10)
-print "\n\t___Bubble Sorting___\n"
-print "Unsorted elements:"
-print numbers, "\n"
-print_pyramid(numbers, color='\033[93m')
+n = int(raw_input("Random numbers to sort: "))
+random_numbers = sample(range(1, n+1), n)
+print_simple_pyramid(random_numbers, colors['WARNING'])
 time.sleep(2)
+os.system('clear')
 keep_sorting = True
-swaps = 0
-iterations = 0
+iteration_length = len(random_numbers)-1
 while keep_sorting:
     keep_sorting = False
-    iterations += 1
-    for i in range(len(numbers)):
+    for i in range(iteration_length):
+        time.sleep(0.1)
         os.system('clear')
-        j = numbers[i:i+2]
-        if j[0] > j[-1]:
-            swaps += 1
-            numbers[i] = j[-1]
-            numbers[i+1] = j[0]
+        for j in range(len(random_numbers)):
+            if j == i:
+                print colors['HEADER'], '■' * random_numbers[i], random_numbers[i], colors['ENDC']
+            elif j == i+1:
+                print colors['OKBLUE'], '■' * random_numbers[i+1], random_numbers[i+1], colors['ENDC']
+            else:
+                print colors['BOLD'], '■' * random_numbers[j], random_numbers[j], colors['ENDC']
+        if random_numbers[i] > random_numbers[i+1]:
+            time.sleep(0.15)
+            os.system('clear')
+            random_numbers[i], random_numbers[i+1] = random_numbers[i+1], random_numbers[i]
             keep_sorting = True
-        print "\n\t___Bubble Sorting___\n"
-        print "Sorting Elementes:"
-        print numbers, "\n"
-        print_pyramid(numbers, i, i+1)
-        time.sleep(.05)
+            for j in range(len(random_numbers)):
+                if j == i:
+                    print colors['HEADER'], '■' * random_numbers[i], random_numbers[i], colors['ENDC']
+                elif j == i+1:
+                    print colors['OKBLUE'], '■' * random_numbers[i+1], random_numbers[i+1], colors['ENDC']
+                else:
+                    print colors['BOLD'], '■' * random_numbers[j], random_numbers[j], colors['ENDC']
+    iteration_length -= 1
+
 os.system('clear')
-print "\n\t___Bubble Sorting___\n"
-print "Sorted Elementes:"
-print numbers, "\n"
-print_pyramid(numbers, color='\033[92m')
-print "Swaps:", swaps
-print "Iterations:", iterations, "\n"
+print_simple_pyramid(random_numbers, colors['OKGREEN'])
