@@ -17,7 +17,7 @@ def bubble_sort(u):
     return u
 
 n = int(raw_input("Random numbers to sort: "))
-random_numbers = sample(range(n), n)
+random_numbers = sample(range(1, n+1), n)
 print "Unsorted:", random_numbers
 bubble_sort(random_numbers)
 print "Sorted:", random_numbers
