@@ -5,53 +5,46 @@ from random import sample
 import os
 import time
 
+colors = {
+    'HEADER': '\033[95m',
+    'OKBLUE': '\033[94m',
+    'OKGREEN': '\033[92m',
+    'WARNING': '\033[93m',
+    'FAIL': '\033[91m',
+    'ENDC': '\033[0m',
+    'BOLD': '\033[1m',
+    'UNDERLINE': '\033[4m',
+}
 
-def print_pyramid(elements, a=None, b=None, color=None):
-    """Print a number pyramid."""
-    for i in range(len(elements)):
-        if i == a:
-            print '\033[95m' + ('■' * elements[i]) + '\033[0m'
-        elif i == b:
-            print '\033[94m' + ('■' * elements[i]) + '\033[0m'
-        else:
-            if color:
-                print color + ('■' * elements[i]) + '\033[0m'
-            else:
-                print '■' * elements[i]
-    print '\a'
+
+def print_simple_pyramid(l, color):
+    """Print simple pyramid."""
+    for i in range(len(l)):
+        print color, '■' * l[i], l[i], colors['ENDC']
 
 os.system('clear')
-numbers = sample(range(1, 11), 10)
-print "\n\t___Selection Sorting___\n"
-print "Unsorted elements:"
-print numbers, "\n"
-print_pyramid(numbers, color='\033[93m')
+n = int(raw_input("Random numbers to sort: "))
+random_numbers = sample(range(1, n+1), n)
+print_simple_pyramid(random_numbers, colors['WARNING'])
 time.sleep(2)
-swaps = 0
-iterations = 0
-for i in range(0, len(numbers)-1):
-    unsorted_elementes = numbers[i:]
-    smallest = unsorted_elementes[0]
-    smallest_index = i
-    for j in range(len(unsorted_elementes)):
+os.system('clear')
+for i in range(len(random_numbers)):
+    minimum_value = random_numbers[i]
+    min_index = i
+    for j in range(i, len(random_numbers)):
+        time.sleep(.1)
         os.system('clear')
-        if unsorted_elementes[j] < smallest:
-            smallest = unsorted_elementes[j]
-            smallest_index = i+j
-        iterations += 1
-        print "\n\t___Selection Sorting___\n"
-        print "Sorting Elementes:"
-        print numbers, "\n"
-        print_pyramid(numbers, i, j)
-        time.sleep(.05)
-    numbers[smallest_index], numbers[i] = numbers[i], numbers[smallest_index]
-    swaps += 1
+        for k in range(len(random_numbers)):
+            if k == min_index:
+                print colors['OKBLUE'], '■' * random_numbers[k], random_numbers[k], colors['ENDC']
+            elif k == j + 1:
+                print colors['HEADER'], '■' * random_numbers[k], random_numbers[k], colors['ENDC']
+            else:
+                print colors['BOLD'], '■' * random_numbers[k], random_numbers[k], colors['ENDC']
+        if random_numbers[j] < minimum_value:
+            minimum_value = random_numbers[j]
+            min_index = j
+    random_numbers[i], random_numbers[min_index] = random_numbers[min_index], random_numbers[i]
 
 os.system('clear')
-print "\n\t___Selection Sorting___\n"
-print "Sorted Elementes:"
-print numbers, "\n"
-print_pyramid(numbers, color='\033[92m')
-print "Swaps:", swaps
-print "Iterations:", iterations, "\n"
-
+print_simple_pyramid(random_numbers, colors['OKGREEN'])

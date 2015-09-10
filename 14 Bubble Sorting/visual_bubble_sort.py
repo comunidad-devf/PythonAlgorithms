@@ -20,7 +20,7 @@ colors = {
 def print_simple_pyramid(l, color):
     """Print simple pyramid."""
     for i in range(len(l)):
-        print color, '■' * random_numbers[i], random_numbers[i], colors['ENDC']
+        print color, '■' * l[i], l[i], colors['ENDC']
 
 os.system('clear')
 n = int(raw_input("Random numbers to sort: "))
