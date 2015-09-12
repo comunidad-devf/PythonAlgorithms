@@ -33,7 +33,7 @@ iteration_length = len(random_numbers)-1
 while keep_sorting:
     keep_sorting = False
     for i in range(iteration_length):
-        time.sleep(0.1)
+        time.sleep(.1)
         os.system('clear')
         for j in range(len(random_numbers)):
             if j == i:
@@ -43,7 +43,7 @@ while keep_sorting:
             else:
                 print colors['BOLD'], '■' * random_numbers[j], random_numbers[j], colors['ENDC']
         if random_numbers[i] > random_numbers[i+1]:
-            time.sleep(0.15)
+            time.sleep(0.1)
             os.system('clear')
             random_numbers[i], random_numbers[i+1] = random_numbers[i+1], random_numbers[i]
             keep_sorting = True
