@@ -1,27 +1,26 @@
 """Caesar Cipher."""
 
+from string import ascii_uppercase as POOL
+from string import ascii_lowercase as pool
 
-def encrypt(plain_text, key):
-    """Encrypt plain text."""
+
+def caesar(plain_text, key):
     cipher_text = ''
-    for letter in plain_text.upper():
-        if letter == ' ':
-            cipher_text += letter
-        elif ord(letter) > 90 - key:
-            cipher_text += chr(ord(letter) - (26 - key))
+
+    for char in plain_text:
+        if not char.isalpha():
+            cipher_text += char
         else:
-            cipher_text += chr(ord(letter) + key)
+            if char.isupper():
+                cipher_text += POOL[(POOL.find(char) + key) % 26]
+            else:
+                cipher_text += pool[(pool.find(char) + key) % 26]
     return cipher_text
 
 
+def encrypt(plain_text, key):
+    return caesar(plain_text, key)
+
+
 def decrypt(cipher_text, key):
-    """Decrypt cipher text."""
-    plain_text = ''
-    for letter in cipher_text.upper():
-        if letter == ' ':
-            plain_text += letter
-        elif ord(letter) < 65 + key:
-            plain_text += chr(ord(letter) + (26 - key))
-        else:
-            plain_text += chr(ord(letter) - key)
-    return plain_text
+    return caesar(cipher_text, -key)
